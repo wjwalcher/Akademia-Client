@@ -4,7 +4,6 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
-
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -21,41 +20,22 @@ angular.module('starter', ['ionic'])
       StatusBar.styleDefault();
     }
   });
+})
+
+.config(function($stateProvider, $urlRouterProvider) {
+$urlRouterProvider.otherwise("/");
+$stateProvider
+.state('home', {
+  url: '/',
+  templateUrl: "templates/room-list.html",
+  controller:"RoomsController"
+})
+
+.state('room',{
+  url:'/rooms/:id',
+  templateUrl: "templates/single-room.html",
+  controller:'SingleRoomController'
 });
+// if none of the above states are matched, use this as the fallback
 
-angular.module('starter')
-
-.controller('MessagesController', function($scope, $http){
-  var person = prompt("Please enter your username", "");
-  getMessages();
-  var objDiv = document.getElementById("message-list");
-  $scope.sendMessage = sendMessage;
-
-  function getMessages() {
-    $http.get("https://polar-caverns-57560.herokuapp.com/messages").then(function(response){
-      $scope.messages = response.data;
-      objDiv.scrollTop = objDiv.scrollHeight;
-    });
-    setTimeout(getMessages, 30000);
-  }
-
-  function sendMessage() {
-    var message = {
-      timestamp: new Date(),
-      message: $scope.messageToSend,
-      username: person
-    };
-
-    navigator.geolocation.getCurrentPosition(function(position){
-      message.lat=position.coords.latitude;
-      message.lon=position.coords.longitude;
-      $http.post("https://polar-caverns-57560.herokuapp.com/messages", message).then(function(response) {
-        $scope.messages = response.data;
-        objDiv.scrollTop = objDiv.scrollHeight;
-    });
-    });
-
-    
-    document.getElementById("messageToSend").value = "";
-  }
 });
