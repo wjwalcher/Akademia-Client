@@ -40,7 +40,7 @@ html{
 	width: 18%;
 	text-align: center;
 	padding-top: -5px;
-	font-size:1.5em;
+	font-size:15px;
 }
 
 .room-item{
@@ -70,4 +70,5 @@ html{
 
 #send-room{
 	margin-top:10px;
+	font-size: 10px;
 }

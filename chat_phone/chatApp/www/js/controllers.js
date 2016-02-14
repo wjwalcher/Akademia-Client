@@ -6,7 +6,7 @@ angular.module('starter')
       UserService.user.username = prompt("Please enter your username", "");
       UserService.user.lat = position.coords.latitude;
       UserService.user.lon = position.coords.longitude;
-      $http.get("https://polar-caverns-57560.herokuapp.com/users").then(function(response){ 
+      $http.post("https://polar-caverns-57560.herokuapp.com/users", UserService.user).then(function(response){ 
         UserService.user = response.data;
         getRooms();
     });
@@ -17,7 +17,7 @@ angular.module('starter')
   $scope.createRoom = createRoom;
 
   function getRooms() {
-    $http.get("https://polar-caverns-57560.herokuapp.com/rooms" + "?userID=" + UserService.user.id).then(function(response){ 
+    $http.get("https://polar-caverns-57560.herokuapp.com/rooms").then(function(response){ 
       $scope.rooms = response.data;
     });
   }
@@ -34,9 +34,8 @@ angular.module('starter')
       };
       $http.post("https://polar-caverns-57560.herokuapp.com/rooms", room).then(function(response) {
         $scope.rooms = response.data;
+      });
     });
-    });
-    
     document.getElementById("roomNameToCreate").value = "";
   }
 })
