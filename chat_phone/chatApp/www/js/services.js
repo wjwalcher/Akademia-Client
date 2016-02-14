@@ -1,6 +1,11 @@
 angular.module('starter')
-.factory('UsernameService', function UsernameService(){
+.factory('UserService', function UserService(){
+	var user = {
+		username: "",
+		lat: "",
+		lon: ""
+	}
 	return{
-		username: ""
+		user:user
 	}
 });
