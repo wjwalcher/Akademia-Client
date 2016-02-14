@@ -3,6 +3,10 @@ html{
 	font-family:"Roboto", arial;
 }
 
+#title{
+	color:#0091EA;
+}
+
 #main-content{
 	bottom: 100px;
 	padding: 10px;
@@ -23,7 +27,7 @@ html{
 #roomNameToCreate{
 	width: 80%;
 	height: 20px;
-	margin-top: 15px;
+	margin-top: 7px;
 	color: black;
 	resize: none;
 }
@@ -35,7 +39,8 @@ html{
 .send-button{
 	width: 18%;
 	text-align: center;
-	padding-top: 5px;
+	padding-top: -5px;
+	font-size:1.5em;
 }
 
 .room-item{
@@ -60,6 +65,7 @@ html{
 
 #footer-bar-list{
 	margin-top:5px;
+	padding-top:-5px;
 }
 
 #send-room{
