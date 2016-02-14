@@ -1,4 +1,6 @@
 angular.module('starter')
-.factory('DataService', function DataService(){
-	
+.factory('UsernameService', function UsernameService(){
+	return{
+		username: ""
+	}
 });

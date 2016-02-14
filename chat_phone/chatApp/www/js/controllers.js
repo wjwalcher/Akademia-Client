@@ -1,7 +1,10 @@
 angular.module('starter')
 
-.controller('RoomsController', function($scope, $http){
-  var person = prompt("Please enter your username", "");
+.controller('RoomsController', function($scope, $http, UsernameService){
+  if(!UsernameService.username){ 
+    UsernameService.username = prompt("Please enter your username", "");
+  }
+  console.log(UsernameService.username);
   getRooms();
   var objDiv = document.getElementById("message-list");
   $scope.createRoom = createRoom;
@@ -17,7 +20,7 @@ angular.module('starter')
       var room = {
         timestamp: new Date(),
         name: $scope.roomNameToCreate,
-        username: person,
+        username: UsernameService.username,
         lat:position.coords.latitude,
         lon:position.coords.longitude,
         messages: []
@@ -31,7 +34,7 @@ angular.module('starter')
   }
 })
 
-.controller('SingleRoomController', function($scope, $http, $stateParams){
+.controller('SingleRoomController', function($scope, $http, $stateParams, UsernameService){
   getRoom();
   $scope.sendMessage = sendMessage;
 
@@ -40,17 +43,19 @@ angular.module('starter')
       $scope.room = response.data;
       $scope.messages = response.data.messages;
     });
+    setTimeout(getRoom, 1000);
   }
     function sendMessage() {
         var message = {
           timestamp: new Date(),
           message: $scope.messageToSend,
-          username: "Person"
+          username: UsernameService.username
         };
         $http.post("https://polar-caverns-57560.herokuapp.com/rooms/" + $stateParams.id + "/messages", message).then(function(response) {
           $scope.messages = response.data.messages;
           console.log($scope.messages);
       });
       document.getElementById("messageToSend").value = "";
+      $scope.messageToSend = "";
     }
 });
