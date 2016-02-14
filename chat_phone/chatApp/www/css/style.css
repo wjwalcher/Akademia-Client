@@ -1,0 +1,34 @@
+/* Empty. Add your own CSS if you like */
+#main-content{
+	bottom: 100px;
+	padding: 10px;
+}
+
+#message-list{
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.message-date{
+	font-size: 10px;
+	color: gray;
+}
+
+#footer{
+	height: 100px;
+}
+
+#messageToSend{
+	width: 80%;
+	height: 90px;
+	margin-bottom: 5px;
+	color: black;
+	resize: none;
+}
+
+.send-button{
+	width: 18%;
+	text-align: center;
+	padding-top: 30px;
+}
