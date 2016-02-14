@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
-*{
-	font-family:Roboto;
+html{
+	font-family:"Roboto", arial;
 }
 
 #main-content{
@@ -21,7 +21,7 @@
 
 
 #roomNameToCreate{
-	width: 20%;
+	width: 80%;
 	height: 20px;
 	margin-top: 15px;
 	color: black;
